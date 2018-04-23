@@ -1,0 +1,52 @@
+{
+  "manifestVersion": 1,
+  "id": "lg-vsts-extension-pack",
+  "version": "0.1.0",
+  "name": "LogiGear VSTS extension pack",
+  "description": "A combined package that contains all needs of LogiGear DevOps team",
+  "publisher": "trinhpham",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
+  "contributions": [
+    {
+      "id": "TrinhP.HelloWorld",
+      "type": "ms.vss-web.hub",
+      "description": "Adds a 'Hello' hub to the Work hub group.",
+      "targets": [
+        "ms.vss-work-web.work-hub-group"
+      ],
+      "properties": {
+        "name": "Hello",
+        "order": 99,
+        "uri": "hello-world.html"
+      }
+    }
+  ],
+  "scopes": [
+    "vso.work"
+  ],
+  "files": [
+    {
+      "path": "hello-world.html",
+      "addressable": true
+    },
+    {
+      "path": "scripts",
+      "addressable": true
+    },
+    {
+      "path": "sdk/scripts",
+      "addressable": true
+    },
+    {
+      "path": "images/icon.png",
+      "addressable": true
+    }
+  ]
+}

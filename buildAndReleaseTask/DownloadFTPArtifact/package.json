@@ -1,0 +1,21 @@
+{
+  "name": "trinhp-downloadftpartifact",
+  "version": "1.0.0",
+  "description": "DownloadFTPArtifact",
+  "main": "DownloadFTPArtifact.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hlvtrinh.visualstudio.com/DefaultCollection/TA/_git/lg-vsts-extension-pack"
+  },
+  "author": "Trinh Pham",
+  "license": "MIT",
+  "dependencies": {
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "process": "^0.11.10",
+    "vsts-task-lib": "^2.4.0"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "lg-vsts-extension-pack",
-  "version": "0.1.0",
+  "version": "0.1.24",
   "name": "LogiGear VSTS extension pack",
   "description": "A combined package that contains all needs of LogiGear DevOps team",
   "publisher": "trinhpham",
@@ -15,41 +15,16 @@
   },
   "contributions": [
     {
-      "id": "TrinhP.HelloWorld",
-      "type": "ms.vss-web.hub",
-      "description": "Adds a 'Hello' hub to the Work hub group.",
-      "targets": [
-        "ms.vss-work-web.work-hub-group"
-      ],
-      "properties": {
-        "name": "Hello",
-        "order": 99,
-        "uri": "hello-world.html"
-      }
-    },
-    {
-      "id": "TrinhP.DownloadFTPArtifact",
+      "id": "trinhp-download-ftp-artifact",
       "type": "ms.vss-distributed-task.task",
       "targets": [
         "ms.vss-distributed-task.tasks"
       ],
       "properties": {
-        "name": "Download FTP Artifact"
-      }
-    },
-    {
-      "id": "TrinhP.PublishFTPArtifact",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "name": "Publish FTP Artifact"
+        "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
+        "name": "buildAndReleaseTask/DownloadFTPArtifact"
       }
     }
-  ],
-  "scopes": [
-    "vso.work"
   ],
   "files": [
     {

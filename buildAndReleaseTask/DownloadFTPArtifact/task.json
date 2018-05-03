@@ -1,19 +1,19 @@
 {
-  "id": "TrinhP.DownloadFTPArtifact",
-  "name": "DownloadFTPArtifact",
-  "friendlyName": "DownloadFTPArtifact",
-  "description": "DownloadFTPArtifact",
+  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190a",
+  "name": "trinhp-download-ftp-artifact",
+  "friendlyName": "[TrinhP] Download FTP Artifact",
+  "description": "[TrinhP] Download FTP Artifact",
   "helpMarkDown": "",
   "category": "Utility",
   "visibility": [
     "Build",
     "Release"
   ],
-  "author": "Trinh Pham",
+  "author": "trinhpham",
   "version": {
     "Major": 0,
     "Minor": 1,
-    "Patch": 0
+    "Patch": 9
   },
   "instanceNameFormat": "DownloadFTPArtifact",
   "groups": [
@@ -25,29 +25,27 @@
   ],
   "inputs": [
     {
-      "name": "samplepathinput",
-      "type": "filePath",
-      "label": "Sample Path",
+      "name": "ftp-server",
+      "type": "connectedService:Generic",
+      "label": "FTP Server Endpoint",
+      "required": true,
+      "helpMarkDown": "The URL for downloading"
+    },
+    {
+      "name": "ftp-directory",
+      "type": "string",
+      "label": "FTP Directory",
+      "defaultValue": "Build/artifacts/",
+      "required": true,
+      "helpMarkDown": "FTP Directory"
+    },
+    {
+      "name": "target-directory",
+      "type": "string",
+      "label": "Download Directory",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "A sample path which is relative to root of repo if empty"
-    },
-    {
-      "name": "samplestring",
-      "type": "string",
-      "label": "Sample String",
-      "defaultValue": "",
-      "required": false,
-      "helpMarkDown": "A sample string"
-    },
-    {
-      "name": "samplebool",
-      "type": "boolean",
-      "label": "Sample Boolean",
-      "defaultValue": "false",
-      "required": false,
-      "helpMarkDown": "If this is true, this task will fail if any errors are written to the StandardError stream.",
-      "groupName": "advanced"
+      "helpMarkDown": "Download Directory"
     }
   ],
   "execution": {

@@ -9,13 +9,13 @@
     "Build",
     "Release"
   ],
-  "author": "trinhpham",
+  "author": "hlvtrinh",
   "version": {
-    "Major": 0,
-    "Minor": 1,
-    "Patch": 9
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 0
   },
-  "instanceNameFormat": "DownloadFTPArtifact",
+  "instanceNameFormat": "[TrinhP] DownloadFTPArtifact",
   "groups": [
     {
       "name": "advanced",

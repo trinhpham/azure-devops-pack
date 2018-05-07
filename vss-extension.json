@@ -1,10 +1,10 @@
 {
   "manifestVersion": 1,
-  "id": "lg-vsts-extension-pack",
-  "version": "0.1.24",
-  "name": "LogiGear VSTS extension pack",
-  "description": "A combined package that contains all needs of LogiGear DevOps team",
-  "publisher": "trinhpham",
+  "id": "hlv-vsts-extension-pack",
+  "version": "1.0.1",
+  "name": "HLV VSTS extension pack",
+  "description": "A combined package that contains all needs of my DevOps team",
+  "publisher": "hlvtrinh",
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
@@ -27,10 +27,6 @@
     }
   ],
   "files": [
-    {
-      "path": "hello-world.html",
-      "addressable": true
-    },
     {
       "path": "scripts",
       "addressable": true

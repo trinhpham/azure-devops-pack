@@ -83,13 +83,7 @@ async function run() {
         tl.debug("Enter downloadFromFTP FTP Artifact");
         let host, port, user, pass, inDir, outDir: string, isSecured: boolean;
         if (tl.getInput("HLV_DEV") != null) {
-            host = "192.168.167.107";
-            port = "21";
-            user = "trinh.pham";
-            pass = "myloveisT74643";
-            isSecured = false;
-            inDir = "Build/artifacts/EPG/TADocker/8.3.4.5046/ta-automation";
-            outDir = "F:";
+            //For debug only
         } else {
             let endpointName = tl.getInput(ftpServer);
             tl.debug("endpointName: " + endpointName);

@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "hlv-vsts-extension-pack",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "name": "HLV VSTS extension pack",
   "description": "A combined package that contains all needs of my DevOps team",
   "publisher": "hlvtrinh",

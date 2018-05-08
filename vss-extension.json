@@ -1,18 +1,38 @@
 {
   "manifestVersion": 1,
   "id": "hlv-vsts-extension-pack",
-  "version": "1.0.2",
-  "name": "HLV VSTS extension pack",
+  "version": "1.0.13",
+  "name": "VSTS Extensions Pack",
   "description": "A combined package that contains all needs of my DevOps team",
   "publisher": "hlvtrinh",
+  "galleryFlags": [
+    "Public",
+    "Paid",
+    "Preview"
+  ],
+  "links":{
+    "support":{
+      "uri":"me@hlvtrinh.com"
+    }
+  },
+  "content": {
+    "details": {
+      "path": "overview.md"
+    }
+  },
+  "tags": [
+    "build and release task",
+    "download ftp",
+    "ftp artifact"
+  ],
+  "icons": {
+    "default": "images/icon.png"
+  },
   "targets": [
     {
       "id": "Microsoft.VisualStudio.Services"
     }
   ],
-  "icons": {
-    "default": "images/icon.png"
-  },
   "contributions": [
     {
       "id": "trinhp-download-ftp-artifact",

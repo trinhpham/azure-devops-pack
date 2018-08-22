@@ -44,6 +44,16 @@
         "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
         "name": "buildAndReleaseTask/DownloadFTPArtifact"
       }
+    },{
+      "id": "trinhp-publish-testplan-results",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
+        "name": "buildAndReleaseTask/PublishTestPlanResults"
+      }
     }
   ],
   "files": [
@@ -64,6 +74,9 @@
     },
     {
       "path": "buildAndReleaseTask/PublishFTPArtifact"
+    },
+    {
+      "path": "buildAndReleaseTask/PublishTestPlanResults"
     }
   ]
 }

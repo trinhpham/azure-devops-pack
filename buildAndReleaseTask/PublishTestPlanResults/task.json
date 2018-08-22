@@ -1,8 +1,8 @@
 {
-  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190a",
-  "name": "trinhp-download-ftp-artifact",
-  "friendlyName": "[DevOps] Download FTP Artifacts",
-  "description": "[DevOps] Download FTP Artifacts",
+  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190b",
+  "name": "trinhp-publishtestplanresults",
+  "friendlyName": "[DevOps] Publish Test Plan Results",
+  "description": "[DevOps] Publish Test Plan Results",
   "helpMarkDown": "",
   "category": "Utility",
   "visibility": [
@@ -15,7 +15,7 @@
     "Minor": 0,
     "Patch": 1
   },
-  "instanceNameFormat": "[DevOps] DownloadFTPArtifacts",
+  "instanceNameFormat": "[DevOps] Publish Test Plan Results",
   "groups": [
     {
       "name": "advanced",
@@ -50,7 +50,7 @@
   ],
   "execution": {
     "Node": {
-      "target": "DownloadFTPArtifact.js"
+      "target": "PublishTestPlanResults.js"
     }
   }
 }

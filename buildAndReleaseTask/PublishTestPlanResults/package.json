@@ -1,8 +1,8 @@
 {
-  "name": "trinhp-download-ftp-artifact",
+  "name": "trinhp-publish-testplan-results",
   "version": "1.0.0",
-  "description": "DownloadFTPArtifact",
-  "main": "DownloadFTPArtifact.js",
+  "description": "PublishTestPlanResults",
+  "main": "PublishTestPlanResults.js",
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1"
   },
@@ -17,10 +17,8 @@
     "vsts-task-lib": "^2.6.0"
   },
   "devDependencies": {
-    "@types/ftp": "^0.3.29",
     "@types/node": "^10.7.1",
     "@types/q": "^1.5.0",
-    "ftp": "^0.3.10",
     "generic-pool": "^3.4.2"
   }
 }

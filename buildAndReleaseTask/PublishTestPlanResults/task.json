@@ -25,27 +25,83 @@
   ],
   "inputs": [
     {
-      "name": "ftp-server",
-      "type": "connectedService:Generic",
-      "label": "FTP Server Endpoint",
-      "required": true,
-      "helpMarkDown": "The URL for downloading"
-    },
-    {
-      "name": "ftp-directory",
-      "type": "string",
-      "label": "FTP Directory",
-      "defaultValue": "Build/artifacts/",
-      "required": true,
-      "helpMarkDown": "FTP Directory"
-    },
-    {
-      "name": "target-directory",
-      "type": "string",
-      "label": "Download Directory",
+      "name": "testPlan",
+      "type": "pickList",
+      "label": "Test plan",
       "defaultValue": "",
       "required": true,
-      "helpMarkDown": "Download Directory"
+      "helpMarkDown": "Select a test plan containing test suites with automated test cases.",
+      "groupName": "testSelection",
+      "properties": {
+          "DisableManageLink": "True",
+          "EditableOptions": "True"
+      },
+      "visibleRule": "testSelector = testPlan"
+    },
+    {
+        "name": "testSuite",
+        "type": "pickList",
+        "label": "Test suite",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Select one or more test suites containing automated test cases. Test case work items must be associated with an automated test method. [Learn more.](https://go.microsoft.com/fwlink/?linkid=847773",
+        "groupName": "testSelection",
+        "properties": {
+            "MultiSelect": "True",
+            "DisableManageLink": "True",
+            "EditableOptions": "True"
+        },
+        "visibleRule": "testSelector = testPlan"
+    },
+    {
+        "name": "testConfiguration",
+        "type": "pickList",
+        "label": "Test configuration",
+        "defaultValue": "",
+        "required": true,
+        "helpMarkDown": "Select Test Configuration.",
+        "groupName": "testSelection",
+        "properties": {
+            "DisableManageLink": "True",
+            "EditableOptions": "True"
+        },
+        "visibleRule": "testSelector = testPlan"
+    },
+    {
+      "name": "result-file",
+      "type": "string",
+      "label": "junit XML Result",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "junit XML Result"
+    }
+  ],
+  "dataSourceBindings": [
+    {
+        "target": "testPlan",
+        "endpointId": "tfs:teamfoundation",
+        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/plans?filterActivePlans=true&$skip={{skip}}&$top=1000",
+        "resultSelector": "jsonpath:$.value[*]",
+        "resultTemplate": "{ \"Value\" : \"{{{id}}}\", \"DisplayValue\" : \"{{{id}}} - {{{name}}}\" }",
+        "callbackContextTemplate": "{\"skip\": \"{{add skip 1000}}\"}",
+        "callbackRequiredTemplate": "{{isEqualNumber result.count 1000}}",
+        "initialContextTemplate": "{\"skip\": \"0\"}"
+    },
+    {
+        "target": "testConfiguration",
+        "endpointId": "tfs:teamfoundation",
+        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/configurations",
+        "resultSelector": "jsonpath:$.value[*]",
+        "resultTemplate": "{ \"Value\" : \"{{{id}}}\", \"DisplayValue\" : \"{{{id}}} - {{{name}}}\" }"
+    },
+    {
+        "target": "testSuite",
+        "endpointId": "tfs:teamfoundation",
+        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/plans/{{testPlan}}/suites?$asTreeView=true",
+        "parameters": {
+            "testPlan": "$(testPlan)"
+        },
+        "resultSelector": "jsonpath:$.value[*]"
     }
   ],
   "execution": {

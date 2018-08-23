@@ -7,10 +7,11 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}/lg-vsts-extension-pack\\buildAndReleaseTask\\PublishTestPlanResults\\PublishTestPlanResults.js",
-            "outFiles": [
-                "${workspaceFolder}/**/*.js"
+            "name": "PublishTestPlanResults",
+            "cwd": "${fileDirname}",
+            "program": "${workspaceFolder}\\buildAndReleaseTask\\PublishTestPlanResults\\PublishTestPlanResults.js",
+            "args": [
+                "simple"
             ]
         }
     ]

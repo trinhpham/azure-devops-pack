@@ -1,7 +1,7 @@
 {
   "manifestVersion": 1,
   "id": "hlv-vsts-extension-pack",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "name": "VSTS Extensions Pack",
   "description": "A combined package that contains all needs of my DevOps team",
   "publisher": "hlvtrinh",
@@ -23,7 +23,8 @@
   "tags": [
     "build and release task",
     "download ftp",
-    "ftp artifact"
+    "ftp artifact",
+    "publish test plan result"
   ],
   "icons": {
     "default": "images/icon.png"
@@ -35,16 +36,6 @@
   ],
   "contributions": [
     {
-      "id": "trinhp-download-ftp-artifact",
-      "type": "ms.vss-distributed-task.task",
-      "targets": [
-        "ms.vss-distributed-task.tasks"
-      ],
-      "properties": {
-        "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
-        "name": "buildAndReleaseTask/DownloadFTPArtifact"
-      }
-    },{
       "id": "trinhp-publish-testplan-results",
       "type": "ms.vss-distributed-task.task",
       "targets": [
@@ -53,6 +44,17 @@
       "properties": {
         "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
         "name": "buildAndReleaseTask/PublishTestPlanResults"
+      }
+    },
+    {
+      "id": "trinhp-download-ftp-artifact",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "//Name of the task. This must match the folder name of the corresponding self-contained build task definition.": "",
+        "name": "buildAndReleaseTask/DownloadFTPArtifact"
       }
     }
   ],

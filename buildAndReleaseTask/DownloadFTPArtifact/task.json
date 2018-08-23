@@ -18,9 +18,14 @@
   "instanceNameFormat": "[DevOps] DownloadFTPArtifacts",
   "groups": [
     {
-      "name": "advanced",
-      "displayName": "Advanced",
-      "isExpanded": false
+      "name": "input",
+      "displayName": "The FTP Source for downloading",
+      "isExpanded": true
+    },
+    {
+      "name": "output",
+      "displayName": "The destination",
+      "isExpanded": true
     }
   ],
   "inputs": [
@@ -29,6 +34,7 @@
       "type": "connectedService:Generic",
       "label": "FTP Server Endpoint",
       "required": true,
+      "groupName": "input",
       "helpMarkDown": "The URL for downloading"
     },
     {
@@ -37,6 +43,7 @@
       "label": "FTP Directory",
       "defaultValue": "Build/artifacts/",
       "required": true,
+      "groupName": "input",
       "helpMarkDown": "FTP Directory"
     },
     {
@@ -45,6 +52,7 @@
       "label": "Download Directory",
       "defaultValue": "",
       "required": true,
+      "groupName": "output",
       "helpMarkDown": "Download Directory"
     }
   ],

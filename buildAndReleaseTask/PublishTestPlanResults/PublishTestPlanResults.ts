@@ -1,9 +1,11 @@
 'use strict';
+
 import tl = require("vsts-task-lib/task");
 import url = require("url");
 import fs = require("fs");
 import shell = require("shelljs");
 import Q = require('q');
+
 
 const ftpServer = "ftp-server";
 const endpointUsername = "username";

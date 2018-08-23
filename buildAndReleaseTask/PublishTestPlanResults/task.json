@@ -1,6 +1,6 @@
 {
-  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190b",
-  "name": "trinhp-publishtestplanresults",
+  "id": "abf4d4ad-92b1-468d-a730-f501a00150d4",
+  "name": "trinhp-publish-testplan-results",
   "friendlyName": "[DevOps] Publish Test Plan Results",
   "description": "[DevOps] Publish Test Plan Results",
   "helpMarkDown": "",
@@ -18,9 +18,14 @@
   "instanceNameFormat": "[DevOps] Publish Test Plan Results",
   "groups": [
     {
-      "name": "advanced",
-      "displayName": "Advanced",
-      "isExpanded": false
+      "name": "resultSelection",
+      "displayName": "JUnit XML Result",
+      "isExpanded": true
+    },
+    {
+      "name": "testSelection",
+      "displayName": "Test selection",
+      "isExpanded": true
     }
   ],
   "inputs": [
@@ -35,8 +40,7 @@
       "properties": {
           "DisableManageLink": "True",
           "EditableOptions": "True"
-      },
-      "visibleRule": "testSelector = testPlan"
+      }
     },
     {
         "name": "testSuite",
@@ -50,8 +54,7 @@
             "MultiSelect": "True",
             "DisableManageLink": "True",
             "EditableOptions": "True"
-        },
-        "visibleRule": "testSelector = testPlan"
+        }
     },
     {
         "name": "testConfiguration",
@@ -64,44 +67,38 @@
         "properties": {
             "DisableManageLink": "True",
             "EditableOptions": "True"
-        },
-        "visibleRule": "testSelector = testPlan"
+        }
     },
     {
       "name": "result-file",
       "type": "string",
-      "label": "junit XML Result",
+      "label": "File path",
       "defaultValue": "",
       "required": true,
+      "groupName":"resultSelection",
       "helpMarkDown": "junit XML Result"
     }
   ],
-  "dataSourceBindings": [
+  "sourceDefinitions": [
     {
         "target": "testPlan",
-        "endpointId": "tfs:teamfoundation",
-        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/plans?filterActivePlans=true&$skip={{skip}}&$top=1000",
-        "resultSelector": "jsonpath:$.value[*]",
-        "resultTemplate": "{ \"Value\" : \"{{{id}}}\", \"DisplayValue\" : \"{{{id}}} - {{{name}}}\" }",
-        "callbackContextTemplate": "{\"skip\": \"{{add skip 1000}}\"}",
-        "callbackRequiredTemplate": "{{isEqualNumber result.count 1000}}",
-        "initialContextTemplate": "{\"skip\": \"0\"}"
+        "endpoint": "/$(system.teamProject)/_apis/test/plans?api-version=3.0-preview.2",
+        "selector": "jsonpath:$.value[*].name",
+        "keySelector": "jsonpath:$.value[*].id",
+        "authKey": "tfs:teamfoundation"
     },
     {
         "target": "testConfiguration",
-        "endpointId": "tfs:teamfoundation",
-        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/configurations",
-        "resultSelector": "jsonpath:$.value[*]",
-        "resultTemplate": "{ \"Value\" : \"{{{id}}}\", \"DisplayValue\" : \"{{{id}}} - {{{name}}}\" }"
+        "endpoint": "/$(system.teamProject)/_apis/test/configurations?api-version=3.0-preview.1",
+        "selector": "jsonpath:$.value[*].name",
+        "keySelector": "jsonpath:$.value[*].id",
+        "authKey": "tfs:teamfoundation"
     },
     {
         "target": "testSuite",
-        "endpointId": "tfs:teamfoundation",
-        "endpointUrl": "{{endpoint.url}}/{{system.teamProject}}/_apis/test/plans/{{testPlan}}/suites?$asTreeView=true",
-        "parameters": {
-            "testPlan": "$(testPlan)"
-        },
-        "resultSelector": "jsonpath:$.value[*]"
+        "endpoint": "/$(system.teamProject)/_apis/test/plans/$(testPlan)/suites?$asTreeView=true&api-version=3.0-preview.2",
+        "selector": "jsonpath:$.value[*]",
+        "authKey": "tfs:teamfoundation"
     }
   ],
   "execution": {

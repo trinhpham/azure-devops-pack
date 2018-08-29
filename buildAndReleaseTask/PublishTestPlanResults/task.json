@@ -13,19 +13,24 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 1
+    "Patch": 15
   },
   "instanceNameFormat": "[DevOps] Publish Test Plan Results",
   "groups": [
     {
       "name": "resultSelection",
-      "displayName": "JUnit XML Result",
+      "displayName": "Result location",
       "isExpanded": true
     },
     {
       "name": "testSelection",
       "displayName": "Test selection",
       "isExpanded": true
+    },
+    {
+      "name": "advanced",
+      "displayName": "Advanced configuration",
+      "isExpanded": false
     }
   ],
   "inputs": [
@@ -72,11 +77,29 @@
     {
       "name": "resultFile",
       "type": "string",
-      "label": "File path",
+      "label": "JUnit Result (xUnit)",
       "defaultValue": "",
       "required": true,
       "groupName":"resultSelection",
       "helpMarkDown": "junit XML Result"
+    },
+    {
+      "name": "htmlFile",
+      "type": "string",
+      "label": "HTML attachment",
+      "defaultValue": "",
+      "required": false,
+      "groupName":"resultSelection",
+      "helpMarkDown": "The HTML attachment"
+    },
+    {
+      "name": "runName",
+      "type": "string",
+      "label": "Test run name",
+      "defaultValue": "",
+      "required": false,
+      "groupName":"advanced",
+      "helpMarkDown": "The test run name"
     }
   ],
   "sourceDefinitions": [

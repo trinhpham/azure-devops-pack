@@ -7,11 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "PublishTestPlanResults",
-            "cwd": "${fileDirname}",
+            "name": "Launch Program",
             "program": "${workspaceFolder}\\buildAndReleaseTask\\PublishTestPlanResults\\PublishTestPlanResults.js",
+            "cwd": "${workspaceFolder}\\buildAndReleaseTask\\PublishTestPlanResults",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ],
             "args": [
-                "simple"
+                "hl-debug"
             ]
         }
     ]

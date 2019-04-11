@@ -5,3 +5,4 @@ buildAndReleaseTask/DownloadFTPArtifact/DownloadFTPArtifact.js
 **/package-lock.json
 buildAndReleaseTask/PublishTestPlanResults/PublishTestPlanResults.js
 *.map
+pubkey

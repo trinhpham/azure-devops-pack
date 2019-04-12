@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://hlvtrinh.visualstudio.com/DefaultCollection/TA/_git/lg-vsts-extension-pack"
+    "url": "https://github.com/trinhpham/azure-devops-pack"
   },
   "author": "Trinh Pham",
   "license": "MIT",

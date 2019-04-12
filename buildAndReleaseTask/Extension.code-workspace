@@ -1,0 +1,25 @@
+{
+	"folders": [
+		{
+			"name": "lg-vsts-extension-pack",
+			"path": "/Users/trinh.pham/Project/lg-vsts-extension-pack"
+		},
+		{
+			"name": "DownloadFTPArtifact",
+			"path": "DownloadFTPArtifact"
+		},
+		{
+			"name": "PublishFTPArtifact",
+			"path": "PublishFTPArtifact"
+		},
+		{
+			"name": "PublishTestPlanResults",
+			"path": "PublishTestPlanResults"
+		},
+		{
+			"name": "SyncToGitHub",
+			"path": "SyncToGitHub"
+		}
+	],
+	"settings": {}
+}

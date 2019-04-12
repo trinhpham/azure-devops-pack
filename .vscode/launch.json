@@ -7,14 +7,14 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
-            "program": "${workspaceFolder}\\buildAndReleaseTask\\PublishTestPlanResults\\PublishTestPlanResults.js",
-            "cwd": "${workspaceFolder}\\buildAndReleaseTask\\PublishTestPlanResults",
+            "name": "PublishTestPlanResults",
+            "program": "${workspaceFolder}/buildAndReleaseTask/DownloadFTPArtifact/DownloadFTPArtifact.js",
+            "cwd": "${workspaceFolder}/buildAndReleaseTask/DownloadFTPArtifact/",
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ],
             "args": [
-                "hl-debug"
+                "HLV_DEV"
             ]
         }
     ]

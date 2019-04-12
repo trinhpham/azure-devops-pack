@@ -8,17 +8,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://hlvtrinh.visualstudio.com/DefaultCollection/TA/_git/lg-vsts-extension-pack"
+    "url": "https://github.com/trinhpham/azure-devops-pack"
   },
   "author": "Trinh Pham",
   "license": "MIT",
   "dependencies": {
-    "promise-ftp": "^1.3.5",
-    "vsts-task-lib": "^2.6.0",
+    "vsts-task-lib": "^2.7.0",
+    "ftp": "^0.3.10"
+  },
+  "devDependencies": {
     "@types/ftp": "^0.3.29",
-    "@types/node": "^10.7.1",
-    "@types/q": "^1.5.0",
-    "ftp": "^0.3.10",
-    "generic-pool": "^3.4.2"
+    "@types/node": "^11.13.4",
+    "@types/q": "^1.5.2",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.3"
   }
 }

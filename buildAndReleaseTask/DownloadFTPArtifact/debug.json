@@ -1,0 +1,9 @@
+{
+    "host": "192.168.167.218",
+    "port": 21,
+    "user": "",
+    "pass": "",
+    "inDir": "releases/Framework generator/ci/",
+    "outDir": "output",
+    "isSecured": false
+}

@@ -1,8 +1,8 @@
 node_modules 
 .idea
 **/*.vsix
-buildAndReleaseTask/DownloadFTPArtifact/DownloadFTPArtifact.js
+buildAndReleaseTask/**/*.js
+buildAndReleaseTask/**/*.map
 **/package-lock.json
-buildAndReleaseTask/PublishTestPlanResults/PublishTestPlanResults.js
 *.map
 pubkey

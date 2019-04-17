@@ -52,7 +52,7 @@ async function downloadFromFTP(ftp: Client, ftpDir: string, targetDir: string): 
         async (_, listing) => {
             try {
                 if (listing) {
-                    listing.forEach(async (item) => {
+                    for (const item of listing) {
                         try {
                             const itemPath = ftpDir + "/" + item.name;
                             tl.debug("Processing: " + itemPath);
@@ -68,7 +68,7 @@ async function downloadFromFTP(ftp: Client, ftpDir: string, targetDir: string): 
                             failTask("Error happens: " + err.message);
                             return;
                         }
-                    });
+                    }
                 }
             } finally {
                 defer.resolve(null);
@@ -88,7 +88,7 @@ async function run() {
             const debugInfo = require("./debug.json");
             ({host, port, user, pass, inDir, outDir, isSecured} = debugInfo);
         } else {
-            const endpointName = tl.getInput(ftpServerConst);
+            const endpointName = tl.getInput(ftpServerConst, true);
             tl.debug("endpointName: " + endpointName);
             const endpointUrl = tl.getEndpointUrl(endpointName, false);
             tl.debug("url: " + endpointUrl);
@@ -106,17 +106,9 @@ async function run() {
             isSecured = parsedUrl.protocol === "ftps";
             user = tl.getEndpointAuthorizationParameter(endpointName, endpointUsername, false);
             pass = tl.getEndpointAuthorizationParameter(endpointName, endpointPassword, false);
-            outDir = tl.getInput(targetDirConst);
-            if (!outDir) {
-                failTask(`Invalid output directory: ${outDir}`);
-                return;
-            }
+            outDir = tl.getInput(targetDirConst, true);
 
-            inDir = tl.getInput(ftpDirConst);
-            if (!inDir) {
-                failTask(`Invalid input directory: ${inDir}`);
-                return;
-            }
+            inDir = tl.getInput(ftpDirConst, true);
             if (inDir.endsWith("/")) { // trim ending slash
                 inDir = inDir.substring(0, inDir.lastIndexOf("/"));
             }

@@ -1,0 +1,23 @@
+{
+  "name": "trinhp-git-commands",
+  "version": "1.0.0",
+  "description": "GitCommands",
+  "main": "GitCommands.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/trinhpham/azure-devops-pack"
+  },
+  "author": "Trinh Pham",
+  "license": "MIT",
+  "dependencies": {
+    "vsts-task-lib": "^2.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.4",
+    "tslint": "^5.15.0",
+    "typescript": "^3.4.3"
+  }
+}

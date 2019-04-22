@@ -16,6 +16,19 @@
             "args": [
                 "HLV_DEV"
             ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Git Command",
+            "program": "${workspaceFolder}/buildAndReleaseTask/GitCommands/GitCommands.js",
+            "cwd": "${workspaceFolder}/buildAndReleaseTask/GitCommands/",
+            "outFiles": [
+                "${workspaceFolder}/**/*.js"
+            ],
+            "args": [
+                "HLV_DEV"
+            ]
         }
     ]
 }

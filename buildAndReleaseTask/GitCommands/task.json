@@ -1,0 +1,72 @@
+{
+  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190b",
+  "name": "trinhp-git-commands",
+  "friendlyName": "[DevOps] Git Commands",
+  "description": "Run git commands cross-platforms",
+  "helpMarkDown": "",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "author": "hlvtrinh",
+  "version": {
+    "Major": 1,
+    "Minor": 0,
+    "Patch": 1
+  },
+  "instanceNameFormat": "[DevOps] Git Commands",
+  "groups": [
+    {
+      "name": "input",
+      "displayName": "The repository information",
+      "isExpanded": true
+    },
+    {
+      "name": "comamnd",
+      "displayName": "The command",
+      "isExpanded": true
+    }
+  ],
+  "inputs": [
+    {
+      "name": "repo-url",
+      "type": "string",
+      "label": "Remote URL",
+      "required": true,
+      "groupName": "input",
+      "helpMarkDown": "The remote repository URL"
+    },
+    {
+      "name": "repo-user",
+      "type": "connectedService:Generic",
+      "label": "FTP Server Endpoint",
+      "required": true,
+      "groupName": "input",
+      "helpMarkDown": "The URL for downloading"
+    },
+    {
+      "name": "ftp-directory",
+      "type": "string",
+      "label": "FTP Directory",
+      "defaultValue": "Build/artifacts/",
+      "required": true,
+      "groupName": "input",
+      "helpMarkDown": "FTP Directory"
+    },
+    {
+      "name": "target-directory",
+      "type": "string",
+      "label": "Download Directory",
+      "defaultValue": "",
+      "required": true,
+      "groupName": "output",
+      "helpMarkDown": "Download Directory"
+    }
+  ],
+  "execution": {
+    "Node": {
+      "target": "SyncToGitHub.js"
+    }
+  }
+}

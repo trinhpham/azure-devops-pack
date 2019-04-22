@@ -6,3 +6,4 @@ buildAndReleaseTask/**/*.map
 **/package-lock.json
 *.map
 pubkey
+.taskkey

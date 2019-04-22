@@ -13,6 +13,7 @@
   "author": "Trinh Pham",
   "license": "MIT",
   "dependencies": {
+    "simple-git": "^1.110.0",
     "vsts-task-lib": "^2.7.0"
   },
   "devDependencies": {

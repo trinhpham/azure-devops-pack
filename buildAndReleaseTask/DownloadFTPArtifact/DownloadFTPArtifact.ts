@@ -165,7 +165,7 @@ async function run() {
         ftpClient.connect(ftpConfig);
         return;
     } catch (err) {
-        failTask("DownloadFTPArtifactFAILED: " + err.message);
+        failTask(err.message);
     }
 }
 

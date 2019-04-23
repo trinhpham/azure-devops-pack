@@ -2,14 +2,11 @@
   "manifestVersion": 1,
   "id": "hlv-azure-devops-extension-pack",
   "version": "1.1.10",
-  "name": "Azure DevOps Extensions Pack",
+  "name": "Azure DevOps Extensions Pack for TFS 2018",
   "description": "A combined package that contains all needs of my DevOps team",
   "publisher": "hlvtrinh",
   "categories": [
-    "Azure Repos", 
-    "Azure Pipelines", 
-    "Azure Test Plans", 
-    "Azure Artifacts"
+    "Code"
   ],
   "galleryFlags": [
     "Public",

@@ -1,6 +1,6 @@
 {
-  "id": "1e654a42-4fcd-41f4-81cf-e31b5161190a",
-  "name": "trinhp-download-ftp-artifact",
+  "id": "1e654a42-4fcd-41f4-81cf-e31b5161191a",
+  "name": "hlv-download-ftp-artifact",
   "friendlyName": "[DevOps] Download FTP Artifacts",
   "description": "[DevOps] Download FTP Artifacts",
   "helpMarkDown": "",
@@ -12,7 +12,7 @@
   "author": "hlvtrinh",
   "version": {
     "Major": 1,
-    "Minor": 0,
+    "Minor": 2,
     "Patch": 1
   },
   "instanceNameFormat": "[DevOps] DownloadFTPArtifacts",

@@ -7,7 +7,7 @@ import shell = require("shelljs");
 import simplegit from "simple-git/promise";
 import tl = require("vsts-task-lib/task");
 
-let userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch;
+let userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch, excludeFile;
 const git = simplegit();
 
 let REMOTE_NAME = "toSync";
@@ -18,10 +18,16 @@ async function run() {
             // For debug only
             console.log("Entering debug mode");
             const debugInfo = require("./debug.json");
-            ({userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch} = debugInfo);
+            ({userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch, excludeFile} = debugInfo);
         } else {
             log("Loading params");
-            // tl.getInput()
+            userName = tl.getInput("userName", true);
+            userEmail = tl.getInput("userEmail", true);
+            gitDirectory = tl.getInput("gitDirectory", true);
+            remoteUrl = tl.getInput("remoteUrl", true);
+            gitCommand = tl.getInput("gitCommand", true);
+            remoteBranch = tl.getInput("remoteBranch", true);
+            excludeFile = tl.getInput("excludeFile", false);
         }
 
         // add local git config like username and email
@@ -62,14 +68,18 @@ async function run() {
 async function syncToRemote() {
     // Rebase current local to remote Branch
     const curBranches = await git.branch(["-avv"]);
-    const hasRemote = `remotes/${REMOTE_NAME}/${remoteBranch}` in curBranches.branches;
-    if (hasRemote) {
-        const pullResult = await git.pull(REMOTE_NAME, remoteBranch, {"--rebase": "true"});
-        log("Pull result: " + JSON.stringify(pullResult));
+    const remoteExists = `remotes/${REMOTE_NAME}/${remoteBranch}` in curBranches.branches;
+    if (remoteExists) {
+        log(`Remote branch ${remoteBranch} existed`);
+        const curDiff = await git.log({from: curBranches.current, to: `${REMOTE_NAME}/${remoteBranch}`});
+        if (curDiff.total > 0 ) {
+            const pullResult = await git.pull(REMOTE_NAME, remoteBranch, {"--rebase": "true"});
+            log("Pull result: " + JSON.stringify(pullResult));
+        }
     }
 
     // Push to remote
-    const pushResult = await git.push(REMOTE_NAME, remoteBranch);
+    const pushResult = await git.push(REMOTE_NAME, `${curBranches.current}:${remoteBranch}`);
     log("Push result: " + JSON.stringify(pushResult));
 }
 

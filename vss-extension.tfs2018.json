@@ -27,7 +27,9 @@
     "build and release task",
     "download ftp",
     "ftp artifact",
-    "publish test plan result"
+    "publish test plan result",
+    "git command",
+    "git synchronize"
   ],
   "icons": {
     "default": "images/icon.png"

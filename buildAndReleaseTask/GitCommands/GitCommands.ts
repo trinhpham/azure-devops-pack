@@ -7,11 +7,10 @@ import shell = require("shelljs");
 import simplegit from "simple-git/promise";
 import tl = require("vsts-task-lib/task");
 
-let userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch, excludeFile;
-const git = simplegit();
-
-let REMOTE_NAME = "toSync";
 async function run() {
+    let userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch, excludeFile;
+    let REMOTE_NAME = "toSync";
+
     try {
         log("Enter Git Command");
         if (process.argv.includes("HLV_DEV")) {
@@ -21,8 +20,8 @@ async function run() {
             ({userName, userEmail, gitDirectory, remoteUrl, gitCommand, remoteBranch, excludeFile} = debugInfo);
         } else {
             log("Loading params");
-            userName = tl.getInput("userName", true);
-            userEmail = tl.getInput("userEmail", true);
+            userName = tl.getInput("userName");
+            userEmail = tl.getInput("userEmail");
             gitDirectory = tl.getInput("gitDirectory", true);
             remoteUrl = tl.getInput("remoteUrl", true);
             gitCommand = tl.getInput("gitCommand", true);
@@ -30,30 +29,39 @@ async function run() {
             excludeFile = tl.getInput("excludeFile", false);
         }
 
-        // add local git config like username and email
-        await git.addConfig("user.email", userEmail);
-        await git.addConfig("user.name", userName);
+        log("Begin task");
 
-        // Change working dir
-        await git.cwd(gitDirectory);
+        // Open working dir
+        const git = simplegit(gitDirectory);
+        log(`Open directory ${gitDirectory}`);
+
+        // add local git config like username and email
+        if (userEmail) { await git.addConfig("user.email", userEmail); }
+        if (userName) { await git.addConfig("user.name", userName); }
 
         // Init if this is not a git directory
-        if (await git.checkIsRepo()) {
+        log(`Check if current dir is a Git Repo`);
+        if (! await git.checkIsRepo()) {
+            log("Current dir is not a Git repo => initialize it");
             await git.init();
         }
 
         // Add remote
         const curRemote = (await git.getRemotes(true)).filter((r) => r.refs.fetch === remoteUrl);
         if (curRemote.length === 0) {
+            log(`Remote '${REMOTE_NAME}' not found. Add it to current repo`);
             await git.addRemote(REMOTE_NAME, remoteUrl);
         } else {
             REMOTE_NAME = curRemote[0].name;
+            log(`Found remote '${JSON.stringify(curRemote[0])}'`);
         }
-        await git.fetch(REMOTE_NAME);
+
+        const fetchResult = await git.fetch(REMOTE_NAME, remoteBranch);
+        log(`Fetch from new remote: ${JSON.stringify(fetchResult)}`);
 
         switch (gitCommand) {
             case "sync":
-                await syncToRemote();
+                await syncToRemote(git, REMOTE_NAME, remoteBranch);
                 break;
             case "commit":
             default:
@@ -65,7 +73,7 @@ async function run() {
     }
 }
 
-async function syncToRemote() {
+async function syncToRemote(git: simplegit.SimpleGit, REMOTE_NAME: string, remoteBranch: string) {
     // Rebase current local to remote Branch
     const curBranches = await git.branch(["-avv"]);
     const remoteExists = `remotes/${REMOTE_NAME}/${remoteBranch}` in curBranches.branches;

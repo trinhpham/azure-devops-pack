@@ -13,7 +13,7 @@
   "version": {
     "Major": 1,
     "Minor": 0,
-    "Patch": 0
+    "Patch": 8
   },
   "instanceNameFormat": "[DevOps] Git Commands",
   "groups": [
@@ -23,7 +23,7 @@
       "isExpanded": true
     },
     {
-      "name": "comamnd",
+      "name": "command",
       "displayName": "The command",
       "isExpanded": true
     }
@@ -41,7 +41,7 @@
       "name": "userName",
       "type": "string",
       "label": "The git config.user",
-      "required": true,
+      "required": false,
       "groupName": "input",
       "helpMarkDown": "The git `config.user`"
     },
@@ -49,7 +49,7 @@
       "name": "userEmail",
       "type": "string",
       "label": "The git config.email",
-      "required": true,
+      "required": false,
       "groupName": "input",
       "helpMarkDown": "The git `config.email`"
     },
@@ -89,7 +89,7 @@
       "type": "multiLine",
       "label": "Exclude files",
       "defaultValue": "",
-      "required": true,
+      "required": false,
       "groupName": "command",
       "helpMarkDown": "Exclude files",
       "visibleRule": "gitCommand = commit"
@@ -97,7 +97,7 @@
   ],
   "execution": {
     "Node": {
-      "target": "SyncToGitHub.js"
+      "target": "GitCommands.js"
     }
   }
 }
